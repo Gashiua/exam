@@ -1,0 +1,24 @@
+import pandas as pd
+
+
+
+df = pd.read_excel('C:\\Users\\1032240722\\Downloads\\results.xlsx')
+
+
+column1 = 'Математика'
+column2 = 'Русския язык'
+
+
+correlation = df[[column1, column2]].corr().iloc[0, 1]
+
+print(f"Коэффициент корреляции между {column1} и {column2}: {correlation}")
+
+
+result_df = pd.DataFrame({
+    'Column1': [column1],
+    'Column2': [column2],
+    'Correlation': [correlation]
+})
+
+
+result_df.to_excel('correlation_result.xlsx', index=False)
